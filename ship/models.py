@@ -17,7 +17,7 @@ STATUSES = [
 PENDING = 'Pending'
 
 
-class Shipment(models.Model, TimeStampedModel):
+class Shipment(TimeStampedModel, models.Model):
     """
     Shipment model.
     """
@@ -31,15 +31,14 @@ class Shipment(models.Model, TimeStampedModel):
     arrival_date = models.DateField(_('Arrival Date'))
     status = models.CharField(
         _('Status'),
-        max_length=2,
+        max_length=100,
         choices=STATUSES,
         default=PENDING,
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name='shipment_user')
-    country_of_origin = models.CharField(_('Country of origin'),
-                                         max_length=255, blank=True, null=True)
-    country = CountryField()
+    country_of_origin = CountryField()
+    destination_country = CountryField()
 
     def __str__(self):
         return self.package_name
