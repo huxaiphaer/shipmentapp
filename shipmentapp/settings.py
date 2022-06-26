@@ -56,8 +56,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # libraries
+    'rest_framework',
+    'corsheaders',
+
     # Django apps
     'user',
+    'ship',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'shipmentapp.urls'
@@ -99,6 +105,11 @@ DATABASES = {
     'default': dj_database_url.config(
         conn_max_age=600, ssl_require=False, default=os.getenv('DATABASE_URL'))
 }
+
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
