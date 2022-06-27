@@ -1,7 +1,7 @@
 import json
 
-from rest_framework.renderers import JSONRenderer
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.renderers import JSONRenderer
 
 
 class LargeResponsePagination(PageNumberPagination):
