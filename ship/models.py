@@ -1,9 +1,9 @@
-from django.db import models
 import uuid as uuid
 
+from django.db import models
+from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from django_extensions.db.models import TimeStampedModel
-from django.utils.translation import gettext_lazy as _
 
 from user.models import User
 
@@ -27,8 +27,8 @@ class Shipment(TimeStampedModel, models.Model):
                             db_index=True, blank=False, null=False)
     package_name = models.CharField(_('Package Name'), max_length=255,
                                     blank=True, null=True)
-    shipping_date = models.DateField(_('Shipping Date'))
-    arrival_date = models.DateField(_('Arrival Date'))
+    shipping_date = models.DateField(_('Shipping Date'), null=True)
+    arrival_date = models.DateField(_('Arrival Date'), null=True)
     status = models.CharField(
         _('Status'),
         max_length=100,

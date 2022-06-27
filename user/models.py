@@ -1,9 +1,9 @@
-from django.db import models
 import uuid as uuid
-from django_extensions.db.models import TimeStampedModel
-from django.contrib.auth import models as django_models
-from django.utils.translation import gettext_lazy as _
 
+from django.contrib.auth import models as django_models
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django_extensions.db.models import TimeStampedModel
 from rest_framework_simplejwt.tokens import RefreshToken
 
 

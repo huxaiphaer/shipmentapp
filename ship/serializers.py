@@ -1,9 +1,10 @@
+from django_countries.serializers import CountryFieldMixin
 from rest_framework import serializers
 
 from ship.models import Shipment
 
 
-class ShipmentSerializer(serializers.Serializer):
+class ShipmentSerializer(CountryFieldMixin, serializers.ModelSerializer):
     """
     Shipment Serializer Class.
     """
@@ -11,7 +12,7 @@ class ShipmentSerializer(serializers.Serializer):
     class Meta:
         model = Shipment
         fields = ('package_name', 'shipping_date', 'arrival_date',
-                  'status', 'country_of_origin', 'destination_country',)
+                  'status', 'country_of_origin', 'destination_country', 'uuid',)
         readonly = ('uuid',)
 
     def create(self, validated_data):
@@ -20,5 +21,7 @@ class ShipmentSerializer(serializers.Serializer):
         return shipment
 
     def update(self, instance, validated_data):
-        pass
+        instance = super(
+            ShipmentSerializer, self).update(instance, validated_data)
+        return instance
 
