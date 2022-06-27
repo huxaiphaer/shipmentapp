@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn shipmentappy.wsgi
+web: gunicorn shipmentapp.wsgi
