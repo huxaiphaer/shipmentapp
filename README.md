@@ -63,13 +63,15 @@ $ ./manage.py test
 
  #### Endpoints.
 
-| HTTP Method   | End Point                       | Action                  |
-|---------------|---------------------------------|-------------------------|
-| POST          | /api/v1/shipments/              | Submit a shipment       |
-| GET           | /api/v1/shipments/              | Get all shipments.      |
-| GET           | /api/v1/shipments/<uuid:uuid>/  | Get shipment by uuid    |
-| EDIT OR PATCH | /api/v1/shipments/<uuid:uuid>/  | Edit shipment by uuid   |
-| DELETE        | /api/v1/shipments/<uuid:uuid>/  | Delete shipment by uuid |
+| HTTP Method   | End Point                      | Action                  |
+|---------------|--------------------------------|-------------------------|
+| POST          | /api/v1/users/create/          | Create a user           |
+| POST          | /api/v1/users/login/           | Login a user            |
+| POST          | /api/v1/shipments/             | Submit a shipment       |
+| GET           | /api/v1/shipments/             | Get all shipments.      |
+| GET           | /api/v1/shipments/<uuid:uuid>/ | Get shipment by uuid    |
+| EDIT OR PATCH | /api/v1/shipments/<uuid:uuid>/ | Edit shipment by uuid   |
+| DELETE        | /api/v1/shipments/<uuid:uuid>/ | Delete shipment by uuid |
 
 
 ### Contributors 
