@@ -63,6 +63,9 @@ $ ./manage.py test
 
  #### Endpoints.
 
+To test remotely use this `https://shipmentappy.herokuapp.com` for local use `http://127.0.0.1:8000`,
+and th respective endpoints below.
+
 | HTTP Method   | End Point                      | Action                  |
 |---------------|--------------------------------|-------------------------|
 | POST          | /api/v1/users/create/          | Create a user           |
