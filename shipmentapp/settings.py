@@ -14,10 +14,14 @@ from datetime import timedelta
 from pathlib import Path
 
 import dj_database_url
+import django
+from django.conf import settings
 from dotenv import load_dotenv
 
 load_dotenv()
 
+
+REUSE_DB = 1
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,24 +31,22 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG_MODE = os.environ.get('DEBUG_CONFIG') if os.environ.get('DEBUG_CONFIG') else False
+DEBUG_MODE = os.environ.get('DEBUG_CONFIG') if os.environ.get(
+    'DEBUG_CONFIG') else False
 
 DEBUG = os.getenv('DEBUG')
 
 if DEBUG is None:
     DEBUG = False
 
-
 AUTH_USER_MODEL = "user.User"
 
 CORS_ORIGIN_ALLOW_ALL = True
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -59,6 +61,9 @@ INSTALLED_APPS = [
     # libraries
     'rest_framework',
     'corsheaders',
+    'rest_framework_simplejwt',
+    'django_nose',
+    'django_extensions',
 
     # Django apps
     'user',
@@ -97,7 +102,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'shipmentapp.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -105,7 +109,6 @@ DATABASES = {
     'default': dj_database_url.config(
         conn_max_age=600, ssl_require=False, default=os.getenv('DATABASE_URL'))
 }
-
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
@@ -141,7 +144,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -151,3 +153,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
