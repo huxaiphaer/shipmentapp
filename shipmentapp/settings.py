@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_simplejwt',
     'django_nose',
-    'django_extensions',
+    # 'django_extensions',
 
     # Django apps
     'user',
